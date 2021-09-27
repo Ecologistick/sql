@@ -1,46 +1,42 @@
 --Удаление таблиц--
-DROP TABLE IF EXISTS bands, albums, tracks, genres, b_genres, b_albums, mixtapes, t_mixtapes cascade;
+DROP TABLE IF EXISTS bands, albums, tracks, genres, bands_genre, bands_album, mixtape_album_track, mixtapes cascade;
 
-CREATE TABLE genres(
-		genre_name text PRIMARY KEY
-);
+create table bands(
+    id int primary key,
+    band_name text);
+    
+create table genres(
+    id int primary key, 
+    genre_name text);
 
-CREATE TABLE bands(
-		bands_name text PRIMARY KEY ,
-		genre text REFERENCES genres(genre_name)
-);
-
-create table b_genres(
-		bands text REFERENCES bands(bands_name),
-		genre_name text REFERENCES genres(genre_name),
-		PRIMARY KEY(bands, genre_name)
-);
-
-CREATE TABLE albums(
-		album_name text PRIMARY KEY,
-		release_year int,
-		bands_name text REFERENCES bands(bands_name)
-);
-
-CREATE TABLE tracks(
-		track_name text PRIMARY KEY,
-		duration real,
-		album_name text	REFERENCES albums(album_name)
-);
-
-CREATE TABLE b_albums(
-		bands text REFERENCES bands(bands_name),
-		album_name text REFERENCES albums(album_name),
-		PRIMARY KEY(bands, album_name)
-);
-
-CREATE TABLE mixtapes(
-		mixtape_name text PRIMARY KEY,
-		release_year int
-);
-
-CREATE TABLE t_mixtapes(
-		track_name text REFERENCES tracks(track_name),
-		mixtape_name text REFERENCES mixtapes(mixtape_name),
-		PRIMARY KEY(track_name, mixtape_name)
-);
+create table albums(
+    id int primary key,
+    album_name text,
+    release_date text);
+    
+create table tracks (
+    id int primary key,
+    album_id int references albums(id),
+    track_name text,
+    track_time text);
+    
+create table mixtapes(
+    id int primary key,
+    mixtape_name text,
+    release_date int);
+    
+create table bands_genre(
+    id int primary key,
+    artist_id int references bands(id),
+    genre_id int references genres(id));
+                    
+create table bands_album(
+    id int primary key,
+    band_id int references bands(id),
+    album_id int references albums(id));
+                            
+create table mixtape_album_track(
+    id int primary key,
+    collection_id int references mixtapes(id),
+    album_id int references albums(id),
+    track_id int references tracks(id));

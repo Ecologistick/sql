@@ -1,137 +1,58 @@
-INSERT INTO genres(genre_name) 
-	VALUES('Heavy metal'),
-		  ('Pop'),
-		  ('Post-Punk'),
-		  ('Jazz'),
-		  ('Rap'),
-		  ('Metalcore')
-	RETURNING * ;
+INSERT INTO bands(id, band_name)
+VALUES    (1, 'Metallica'),
+        (2, 'Black Sabbath'),
+        (3, 'Lady Gaga'),
+        (4, 'Michael Jackson'),
+        (5, 'Joy Division'),
+        (6, 'Bauhaus'),
+        (7, 'Frank Sinatra'),
+        (8, 'Eminem'),
+        (9, 'Bring Me the Horizon');
 
+INSERT INTO genres(id, Genre_Name)
+VALUES    (1, 'Heavy metal'),
+        (2, 'Pop'),
+        (3, 'Post-Punk'),
+        (4, 'Rap'),
+        (5, 'Metalcore');
+    
 
-INSERT INTO bands(bands_name, genre) 
-	VALUES('Metallica', 'Heavy metal'),
-	('Black Sabbath', 'Heavy metal'),
-	('Lady Gaga', 'Pop'),
-	('Michael Jackson', 'Pop'),
-	('Joy Division', 'Post-Punk'),
-	('Bauhaus', 'Post-Punk'),
-	('Frank Sinatra', 'Jazz'),
-	('Eminem','Rap'),
-	('Bring Me the Horizon','Metalcore')
-	RETURNING * ;
+INSERT INTO albums(id, album_name, release_date)
+VALUES    (1, 'Master of Puppets','1986'),
+        (2, 'Paranoid','1970'),
+        (3, 'The Remix','2010'),
+        (4, 'Bad','1987'),
+        (5, 'Unknown Pleasures','1979'),
+        (6, 'Mask','1981'),
+        (7, 'All Alone','1962'),
+        (8, 'Relapse','2009'),
+            (9, 'Post Human: Survival Horror','2020');
 
-INSERT INTO b_genres(bands, genre_name) 
-	VALUES('Metallica', 'Heavy metal'),
-	('Black Sabbath', 'Heavy metal'),
-	('Lady Gaga', 'Pop'),
-	('Michael Jackson', 'Pop'),
-	('Joy Division', 'Post-Punk'),
-	('Bauhaus', 'Post-Punk'),
-	('Frank Sinatra', 'Jazz'),
-	('Eminem','Rap')
-	--('Bring Me the Horizon', 'Metalcore')
-	RETURNING * ;
+INSERT INTO tracks(id, track_name, track_time)
+VALUES    (1, 'Battery', 3.00),
+        (2, 'Master of Puppets', 3.10),
+        (3, 'Iron Man', 3.20),
+        (4, 'Paranoid', 3.30),
+        (5, 'Paparazzi', 3.40),
+        (6, 'Poker Face', 3.50),
+        (7, 'Smooth Criminal', 4.00),
+        (8, 'Speed Demon', 4.10),
+        (9, 'Disorder', 4.20),
+        (10, 'She `s Lost Control', 4.30),
+        (11, 'The Passion of Lovers', 4.40),
+        (12, 'Dancing', 4.50),
+        (13, 'Charmaine', 5.00),
+        (14, 'All Alone', 5.10),
+        (15, 'My Darling', 5.20),
+        (16, 'Music Box',5.05),
+        (17, 'Parasite Eve',4.51);
 
-INSERT INTO albums(album_name, release_year, bands_name)
-        VALUES('Master of Puppets','1986','Metallica'),
-              ('Paranoid','1970','Black Sabbath'),
-              ('The Remix','2010','Lady Gaga'),
-              ('Bad','1987','Michael Jackson'),
-              ('Unknown Pleasures','1979','Joy Division'),
-              ('Mask','1981','Bauhaus'),
-              ('All Alone','1962','Frank Sinatra'),
-              ('Relapse','2009','Eminem'),
-              ('Post Human: Survival Horror','2020','Bring Me the Horizon')
-RETURNING *;
-
-INSERT INTO tracks(track_name, duration, album_name)
-    VALUES('Battery','5.13','Master of Puppets'),
-          ('Master of Puppets','8.36','Master of Puppets'),
-          ('Iron Man','5.56','Paranoid'),
-          ('Paranoid','2.48','Paranoid'),
-          ('Paparazzi','3.21','The Remix'),
-          ('Poker Face','4.03','The Remix'),
-          ('Smooth Criminal','4.20','Bad'),
-          ('Speed Demon','4.03','Bad'),
-          ('Disorder','3.36','Unknown Pleasures'),
-          ('She `s Lost Control','3.56','Unknown Pleasures'),
-          ('The Passion of Lovers','3.53','Mask'),
-          ('Dancing','2.29','Mask'),
-          ('Charmaine','3.17','All Alone'),
-          ('All Alone','2.42','All Alone'),
-          ('My Darling','5.20','Relapse'),
-          ('Music Box','5.05','Relapse'),
-          ('Parasite Eve','4.51','Post Human: Survival Horror')
-RETURNING *;
-
-INSERT INTO b_albums(bands, album_name) 
-    VALUES('Metallica', 'Master of Puppets'),
-          ('Black Sabbath','Paranoid'),
-          ('Lady Gaga','The Remix'),
-          ('Michael Jackson','Bad'),
-          ('Joy Division','Unknown Pleasures'),
-          ('Bauhaus','Mask'),
-          ('Frank Sinatra','All Alone'),
-          ('Eminem','Relapse'),
-          ('Bring Me the Horizon','Post Human: Survival Horror')
-RETURNING *;
-
-INSERT INTO mixtapes(mixtape_name, release_year)
-            VALUES('First','2021'),
-            ('Second','2021'),
-            ('Rock and similar','2000'),
-            ('Pop and similar','2009'),
-            ('Jazz and similar','1970'),
-            ('Seventies','1980'),
-            ('Eighties','1990'),
-            ('Newest','2010')
-RETURNING *;
-	
-INSERT INTO t_mixtapes(track_name, mixtape_name)
-        VALUES('Battery','First'),
-              ('Iron Man','First'),
-              ('Paparazzi','First'),
-              ('Smooth Criminal','First'),
-              ('Disorder','First'),
-              ('The Passion of Lovers','First'),
-              ('Charmaine','First'),
-              ('My Darling','First'),
-              ('Master of Puppets','Second'),
-              ('Paranoid','Second'),
-              ('Poker Face','Second'),
-              ('Speed Demon','Second'),
-              ('She `s Lost Control','Second'),
-              ('Dancing','Second'),
-              ('All Alone','Second'),
-              ('Music Box','Second'),
-              ('Battery','Rock and similar'),
-              ('Master of Puppets','Rock and similar'),
-              ('Iron Man','Rock and similar'),
-              ('Paranoid','Rock and similar'),
-              ('Disorder','Rock and similar'),
-              ('She `s Lost Control','Rock and similar'),
-              ('The Passion of Lovers','Rock and similar'),
-              ('Dancing','Rock and similar'),
-              ('Paparazzi','Pop and similar'),
-              ('Poker Face','Pop and similar'),
-              ('Smooth Criminal','Pop and similar'),
-              ('Speed Demon','Pop and similar'),
-              ('My Darling','Pop and similar'),
-              ('Music Box','Pop and similar'),
-              ('Charmaine','Jazz and similar'),
-              ('All Alone','Jazz and similar'),
-              ('Iron Man','Seventies'),
-              ('Paranoid','Seventies'),
-              ('Disorder','Seventies'),
-              ('She `s Lost Control','Seventies'),
-              ('Battery','Eighties'),
-              ('Master of Puppets','Eighties'),
-              ('Smooth Criminal','Eighties'),
-              ('Speed Demon','Eighties'),
-              ('The Passion of Lovers','Eighties'),
-              ('Dancing','Eighties'),
-              ('My Darling','Newest'),
-              ('Music Box','Newest'),
-              ('Paparazzi','Newest'),
-              ('Poker Face','Newest')
-RETURNING *;
+INSERT INTO mixtapes(id, mixtape_name, release_date)
+VALUES    (1, 'First', '2021'),
+        (2, 'Second', '2021'),
+        (3, 'Rock and similar','2000'),
+        (4, 'Pop and similar','2009'),
+        (5, 'Jazz and similar', '1990'),
+        (6, 'Seventies','1980'),
+        (7, 'Eighties','1990'),
+        (8, 'Newest','2010');
